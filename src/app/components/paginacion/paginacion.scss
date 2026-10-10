@@ -1,0 +1,23 @@
+.paginacion {
+  display: flex;
+  gap: 6px;
+}
+
+button {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--texto-suave);
+
+  &:hover:not(:disabled) { color: var(--texto); border-color: var(--texto-suave); }
+  &:disabled { opacity: 0.4; cursor: default; }
+
+  &.activa {
+    background: var(--acento);
+    border-color: var(--acento);
+    color: #fff;
+  }
+}

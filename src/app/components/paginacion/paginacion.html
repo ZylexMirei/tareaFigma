@@ -1,0 +1,14 @@
+<nav class="paginacion" aria-label="Paginación">
+  <button type="button" aria-label="Página anterior" [disabled]="pagina() === 1" (click)="ir(pagina() - 1)">‹</button>
+
+  @for (n of paginas(); track n) {
+    <button
+      type="button"
+      [class.activa]="n === pagina()"
+      [attr.aria-current]="n === pagina() ? 'page' : null"
+      (click)="ir(n)"
+    >{{ n }}</button>
+  }
+
+  <button type="button" aria-label="Página siguiente" [disabled]="pagina() === totalPaginas()" (click)="ir(pagina() + 1)">›</button>
+</nav>

@@ -1,0 +1,49 @@
+<article class="tarjeta">
+  <div class="imagen" [style.--tono]="producto().tono">
+    @if (producto().etiqueta) {
+      <span class="etiqueta">{{ producto().etiqueta }}</span>
+    }
+
+    <button
+      type="button"
+      class="favorito"
+      aria-label="Guardar en favoritos"
+      [class.activo]="favorito()"
+      [attr.aria-pressed]="favorito()"
+      (click)="alternarFavorito()"
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8Z" />
+      </svg>
+    </button>
+
+    <div class="telefonos" aria-hidden="true">
+      <span class="tel atras"></span>
+      <span class="tel frente"></span>
+    </div>
+  </div>
+
+  <div class="info">
+    <h3>{{ producto().nombre }}</h3>
+    <p class="specs">{{ producto().almacenamiento }} GB · {{ producto().color }}</p>
+
+    <div class="precio-fila">
+      <strong class="precio">Bs {{ producto().precio | number: '1.2-2' }}</strong>
+      <span class="stock" [class.agotado]="!producto().enStock">
+        {{ producto().enStock ? 'En stock' : 'Agotado' }}
+      </span>
+    </div>
+
+    <button type="button" class="btn-comprar" [disabled]="!producto().enStock" (click)="comprar.emit(producto())">
+      Comprar
+    </button>
+    <button type="button" class="btn-carrito" [disabled]="!producto().enStock" (click)="agregar.emit(producto())">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="20" r="1" />
+        <circle cx="18" cy="20" r="1" />
+        <path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 7H6" />
+      </svg>
+      Añadir al carrito
+    </button>
+  </div>
+</article>

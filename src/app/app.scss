@@ -1,0 +1,39 @@
+.pagina {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cuerpo {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.pie-lista {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.aviso {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  padding: 12px 16px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+}
+
+@media (max-width: 800px) {
+  .cuerpo { grid-template-columns: 1fr; gap: 8px; }
+}

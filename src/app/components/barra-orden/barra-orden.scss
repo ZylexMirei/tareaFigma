@@ -1,0 +1,27 @@
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.total { font-size: 12px; color: var(--texto-suave); }
+
+.orden {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--texto-suave);
+
+  select {
+    background: transparent;
+    border: 0;
+    color: var(--texto);
+    font-weight: 500;
+    cursor: pointer;
+
+    option { background: var(--superficie); }
+  }
+}

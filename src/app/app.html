@@ -1,0 +1,34 @@
+<div class="pagina">
+  <app-encabezado (buscar)="alBuscar($event)" />
+
+  <div class="cuerpo">
+    <app-filtros (cambio)="alFiltrar($event)" />
+
+    <main class="contenido">
+      <app-barra-orden [total]="filtrados().length" (ordenar)="alOrdenar($event)" />
+
+      <app-lista-productos
+        [productos]="visibles()"
+        (comprar)="alComprar($event)"
+        (agregar)="alAgregar($event)"
+      />
+
+      @if (filtrados().length > 0) {
+        <div class="pie-lista">
+          <p>Mostrando {{ visibles().length }} de {{ filtrados().length }} celulares</p>
+          <app-paginacion
+            [pagina]="pagina()"
+            [totalPaginas]="totalPaginas()"
+            (cambiar)="pagina.set($event)"
+          />
+        </div>
+      }
+    </main>
+  </div>
+
+  <app-pie-pagina />
+
+  @if (aviso(); as mensaje) {
+    <div class="aviso" role="status">{{ mensaje }}</div>
+  }
+</div>

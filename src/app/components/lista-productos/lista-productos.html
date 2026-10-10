@@ -1,0 +1,16 @@
+@if (productos().length > 0) {
+  <div class="grilla">
+    @for (producto of productos(); track producto.id) {
+      <app-tarjeta-producto
+        [producto]="producto"
+        (comprar)="comprar.emit($event)"
+        (agregar)="agregar.emit($event)"
+      />
+    }
+  </div>
+} @else {
+  <div class="vacio">
+    <h3>No encontramos celulares con esos filtros</h3>
+    <p>Quita algún filtro o cambia el precio para ver más resultados.</p>
+  </div>
+}

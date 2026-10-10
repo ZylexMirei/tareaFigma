@@ -1,0 +1,70 @@
+<aside class="filtros" aria-label="Filtros">
+  <h2 class="titulo">Filtros</h2>
+
+  <section class="grupo">
+    <h3>Marca</h3>
+    <label class="opcion">
+      <input type="checkbox" [checked]="marcasSel().length === 0" (change)="verTodasLasMarcas()" />
+      <span class="caja"></span>
+      <span class="nombre">Todas las marcas</span>
+      <span class="cuenta">{{ totalProductos }}</span>
+    </label>
+    @for (marca of marcas; track marca) {
+      <label class="opcion">
+        <input type="checkbox" [checked]="marcasSel().includes(marca)" (change)="alternar(marcasSel, marca)" />
+        <span class="caja"></span>
+        <span class="nombre">{{ marca }}</span>
+        <span class="cuenta">{{ totalMarca(marca) }}</span>
+      </label>
+    }
+  </section>
+
+  <section class="grupo">
+    <h3>Precio</h3>
+    <input
+      class="rango"
+      type="range"
+      min="0"
+      step="100"
+      aria-label="Precio máximo"
+      [max]="PRECIO_MAX"
+      [value]="precioMax()"
+      (input)="fijarMax($event)"
+    />
+    <div class="precios">
+      <label>
+        <span class="moneda">Bs</span>
+        <input type="number" min="0" aria-label="Precio mínimo" [value]="precioMin()" (change)="fijarMin($event)" />
+      </label>
+      <label>
+        <span class="moneda">Bs</span>
+        <input type="number" min="0" aria-label="Precio máximo" [value]="precioMax()" (change)="fijarMax($event)" />
+      </label>
+    </div>
+  </section>
+
+  <section class="grupo">
+    <h3>Almacenamiento</h3>
+    @for (gb of almacenamientos; track gb) {
+      <label class="opcion">
+        <input type="checkbox" [checked]="almacenamientosSel().includes(gb)" (change)="alternar(almacenamientosSel, gb)" />
+        <span class="caja"></span>
+        <span class="nombre">{{ gb }} GB</span>
+      </label>
+    }
+  </section>
+
+  <section class="grupo">
+    <h3>Condición</h3>
+    @for (condicion of condiciones; track condicion) {
+      <label class="opcion">
+        <input type="checkbox" [checked]="condicionesSel().includes(condicion)" (change)="alternar(condicionesSel, condicion)" />
+        <span class="caja"></span>
+        <span class="nombre">{{ condicion }}</span>
+        <span class="cuenta">{{ totalCondicion(condicion) }}</span>
+      </label>
+    }
+  </section>
+
+  <button type="button" class="limpiar" (click)="limpiar()">Limpiar filtros</button>
+</aside>

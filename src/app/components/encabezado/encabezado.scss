@@ -1,0 +1,56 @@
+.encabezado {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 0 24px;
+}
+
+.migas {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 11px;
+  color: var(--texto-suave);
+
+  a:hover { color: var(--texto); }
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.subtitulo {
+  margin-top: 8px;
+  color: var(--texto-suave);
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 320px);
+  height: 40px;
+  padding: 0 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  color: var(--texto-suave);
+
+  &:focus-within { border-color: var(--acento); }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: 0;
+    outline: 0;
+    color: var(--texto);
+
+    &::placeholder { color: var(--texto-suave); }
+  }
+}
